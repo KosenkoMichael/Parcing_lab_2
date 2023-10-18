@@ -2,12 +2,13 @@ import csv
 import time
 
 
-def N_cut_by_week():
+def N_cut_by_week(path: str) -> None:
+    """open file and cut it on N files (1file = 1weak)"""
     day_x = ""
     for year in range(2008, 2024):
         for month in range(1, 12):
             for i in range(0, 5):
-                with open("dataset.csv", "r", encoding="utf-8", newline="") as file:
+                with open(path, "r", encoding="utf-8", newline="") as file:
                     reader = csv.reader(file)
                     data = []
                     for row in reader:
@@ -24,9 +25,9 @@ def N_cut_by_week():
     print("end")
 
 
-def main():
-    N_cut_by_week()
+def main() -> None:
+    N_cut_by_week("dataset.csv")
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

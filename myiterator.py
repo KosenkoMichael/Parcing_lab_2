@@ -3,15 +3,18 @@ import time
 
 
 class FileIterator:
+    """path to file and count printed elements"""
     path = ""
     count = 0
 
-    def __init__(self, path):
+    def __init__(self, path: str):
+        """initialization"""
         self.path = path
         self.count = 0
         # print("i was created", self.path, " ", self.count)
 
     def next(self):
+        """open file from path and print the count element"""
         with open(self.path, "r", encoding="utf-8", newline="") as file:
             reader = csv.reader(file)
             count = 0

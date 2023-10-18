@@ -2,10 +2,11 @@ import csv
 import time
 
 
-def N_cut_by_year():
+def N_cut_by_year(path: str) -> None:
+    """open file and cut it on N files (1file = 1year)"""
     for year in range(2008, 2024):
         data = []
-        with open("dataset.csv", "r", encoding="utf-8", newline="") as file:
+        with open(path, "r", encoding="utf-8", newline="") as file:
             reader = csv.reader(file)
             for row in reader:
                 if row[2] == f"{year}":
@@ -18,8 +19,8 @@ def N_cut_by_year():
     print("end")
 
 
-def main():
-    N_cut_by_year()
+def main() -> None:
+    N_cut_by_year("dataset.csv")
 
 
 if __name__ == '__main__':

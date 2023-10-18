@@ -2,10 +2,11 @@ import csv
 import time
 
 
-def file_cut_date_and_data():
+def file_cut_date_and_data(path: str) -> None:
+    """open file and cut it on 2 files (file with data and file with date)"""
     date = []
     data = []
-    with open("dataset.csv", "r", encoding="utf-8", newline="") as file:
+    with open(path, "r", encoding="utf-8", newline="") as file:
         reader = csv.reader(file)
         for row in reader:
             date.append([row[i] for i in range(0, 3)])
@@ -19,8 +20,9 @@ def file_cut_date_and_data():
     print("end")
 
 
-def main():
-    file_cut_date_and_data()
+def main() -> None:
+    file_cut_date_and_data("dataset.csv")
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     main()
