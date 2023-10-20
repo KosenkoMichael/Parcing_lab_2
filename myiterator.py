@@ -2,25 +2,28 @@ import csv
 import time
 
 
-class FileIterator:
-    """path to file and count printed elements"""
-    path = ""
-    count = 0
-
-    def __init__(self, path: str):
-        """initialization"""
+class Iterator:
+    def __init__(self, limit, path):
+        self.limit = limit
+        self.counter = 0
         self.path = path
-        self.count = 0
-        # print("i was created", self.path, " ", self.count)
 
-    def next(self):
-        """open file from path and print the count element"""
-        with open(self.path, "r", encoding="utf-8", newline="") as file:
-            reader = csv.reader(file)
-            count = 0
-            for row in reader:
-                if self.count == count:
-                    print(row)
-                count += 1
-        self.count += 1
+    def __iter__(self):
         return self
+
+    def __next__(self):
+        if self.counter < self.limit:
+            self.counter += 1
+            with open(self.path, "r", encoding="utf-8", newline="") as file:
+                reader = csv.reader(file)
+                count = 0
+                for row in reader:
+                    if count == self.counter and row != "":
+                        data = row[0]
+                        mass = []
+                        for i in range(1, len(row)):
+                            mass.append(row[i])
+                        return (data, mass)
+                    count += 1
+        else:
+            raise StopIteration
