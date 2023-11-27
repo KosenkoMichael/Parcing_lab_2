@@ -3,8 +3,10 @@ import time
 
 
 class Iterator:
-    def __init__(self, limit, path):
-        self.limit = limit
+    def __init__(self, path):
+        with open(path, "r", encoding="utf-8", newline="") as file:
+            text = file.readlines()
+            self.limit = len(text)
         self.counter = 0
         self.path = path
 
@@ -26,4 +28,4 @@ class Iterator:
                         return (data, mass)
                     count += 1
         else:
-            raise StopIteration
+            return None

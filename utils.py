@@ -34,24 +34,26 @@ def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
 
 
 def find_data_years(path: str, data: str) -> tuple:
-    for year in range(2008, 2024):
-        with open(f"{path}\\{year}0101-{year}1231.csv", "r", encoding="utf-8", newline="") as file_N:
-            reader = csv.reader(file_N)
-            for row in reader:
-                if data == row[0]:
-                    mass = []
-                    for i in range(1, len(row)):
-                        mass.append(row[i])
-                    return (data, mass)
-        time.sleep(0.1)
+    year = data[6:10]
+    with open(f"{path}\\{year}0101-{year}1231.csv", "r", encoding="utf-8", newline="") as file_N:
+        reader = csv.reader(file_N)
+        for row in reader:
+            if data == row[0]:
+                mass = []
+                for i in range(1, len(row)):
+                    mass.append(row[i])
+                return (data, mass)
+    time.sleep(0.1)
     return None
 
 
 def find_data_weeks(path: str, data: str) -> tuple:
+    month = data[3:5]
+    year = data[6:10]
     file_names = os.listdir(path)
     for file_name in file_names:
         file_path = os.path.join(path, file_name)
-        if os.path.isfile(file_path):
+        if os.path.isfile(file_path) and month and year in file_name:
             with open(file_path, "r", encoding="utf-8", newline="") as file:
                 reader = csv.reader(file)
                 for row in reader:
@@ -87,7 +89,7 @@ data = "24.05.2015"
 # second = next(iter)
 # print(second)
 
-# s_iter1 = Iterator(23, "dataset.csv")
+# iter = Iterator("dataset.csv")
 
-# for val in s_iter1:
-#     print(val)
+# for i in range(1,10):
+#     print(next(iter))
