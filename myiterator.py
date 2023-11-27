@@ -3,7 +3,12 @@ import time
 
 
 class Iterator:
-    def __init__(self, path):
+    def __init__(self, path: str):
+        """Initializarion
+
+        Args:
+            path (srr): path to file to iterate
+        """
         with open(path, "r", encoding="utf-8", newline="") as file:
             text = file.readlines()
             self.limit = len(text)
@@ -14,6 +19,12 @@ class Iterator:
         return self
 
     def __next__(self):
+        """ Get next element
+
+        Returns:
+            tuple: if next element consist
+            None: if the file has ended
+        """
         if self.counter < self.limit:
             self.counter += 1
             with open(self.path, "r", encoding="utf-8", newline="") as file:

@@ -3,7 +3,11 @@ import time
 
 
 def N_cut_by_year(path: str) -> None:
-    """open file and cut it on N files (1file = 1year)"""
+    """Open .csv file from path and fill "2/" folder with n files : 1 file = 1 year
+
+    Args:
+        path (str): path to file to cut
+    """
     for year in range(2008, 2024):
         data = []
         with open(path, "r", encoding="utf-8", newline="") as file:

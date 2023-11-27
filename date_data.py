@@ -3,7 +3,11 @@ import time
 
 
 def file_cut_date_and_data(path: str) -> None:
-    """open file and cut it on 2 files (file with data and file with date)"""
+    """Open .csv file from path and fill "1/" folder with 2 files : DATA and DATE
+
+    Args:
+        path (str): path to file to cut
+    """
     date = []
     data = []
     with open(path, "r", encoding="utf-8", newline="") as file:
