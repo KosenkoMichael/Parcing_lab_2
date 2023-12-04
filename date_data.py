@@ -14,7 +14,7 @@ def file_cut_date_and_data(path: str) -> None:
         reader = csv.reader(file)
         for row in reader:
             date.append([row[0]])
-            data.append([row[i] for i in range(1, 7)])
+            data.append([row[i] for i in range(1, 9)])
     with open("1\\X.csv", "w", encoding="utf-8", newline="") as file_x:
         writer = csv.writer(file_x)
         writer.writerows(date)
