@@ -62,8 +62,8 @@ def find_data_years(path: str, data: str) -> tuple:
     Returns:
         tuple: ((date, we find), (data, we found))
     """
-    year = data[6:10]
-    with open(f"{path}\\{year}0101-{year}1231.csv", "r", encoding="utf-8", newline="") as file_N:
+    year = data[0:4]
+    with open(f"{path}\\{year}-01-01-{year}-12-31.csv", "r", encoding="utf-8", newline="") as file_N:
         reader = csv.reader(file_N)
         for row in reader:
             if data == row[0]:
@@ -85,8 +85,8 @@ def find_data_weaks(path: str, data: str) -> tuple:
     Returns:
         tuple: ((date, we find), (data, we found))
     """
-    month = data[3:5]
-    year = data[6:10]
+    month = data[5:7]
+    year = data[0:4]
     file_names = os.listdir(path)
     for file_name in file_names:
         file_path = os.path.join(path, file_name)
@@ -125,7 +125,7 @@ def next_iter(path: str) -> tuple:
 
 
 # 24.05.2022,+16,742,ЮЗ 3м/с,+13,743,ЮЗ 3м/с
-data = "24.05.2022"
+data = "2022-05-24"
 # print(find_data_dataset("dataset.csv", data))
 # print(find_data_datA_E("1/X.csv", "1/Y.csv", data))
 # print(find_data_years("2", data))
