@@ -2,9 +2,10 @@ import csv
 import time
 import os
 from myiterator import Iterator
+import datetime
 
 
-def find_data_dataset(path: str, data: str) -> tuple:
+def find_data_dataset(path: str, data: datetime) -> tuple | None:
     """ Function: find data in original dataset
 
     Args:
@@ -27,7 +28,7 @@ def find_data_dataset(path: str, data: str) -> tuple:
         return None
 
 
-def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
+def find_data_datA_E(path_X: str, path_Y: str, data: datetime) -> tuple | None:
     """Find data in dataset (data, date)
 
     Args:
@@ -56,7 +57,7 @@ def find_data_datA_E(path_X: str, path_Y: str, data: str) -> tuple:
         return None
 
 
-def find_data_years(path: str, data: str) -> tuple:
+def find_data_years(path: str, data: datetime) -> tuple | None:
     """Find date in dataset (years)
 
     Args:
@@ -81,7 +82,7 @@ def find_data_years(path: str, data: str) -> tuple:
         return None
 
 
-def find_data_weeks(path: str, data: str) -> tuple:
+def find_data_weeks(path: str, data: datetime) -> tuple | None:
     """find date in dataset (weeks)
 
     Args:
@@ -145,7 +146,7 @@ data = "2022-05-24"
 # second = next(iter)
 # print(second)
 
-# iter = Iterator("dataset.csv")
+iter = Iterator("dataset.csv")
 
-# for i in range(1,10):
-#     print(next(iter))
+for i in range(1,10):
+    print(next(iter))

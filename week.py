@@ -27,7 +27,7 @@ def N_cut_by_weak(path: str) -> None:
     print("end")
 
 
-def main():
+def main() -> None:
     N_cut_by_weak("dataset.csv")
 
 

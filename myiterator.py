@@ -3,7 +3,7 @@ import time
 
 
 class Iterator:
-    def __init__(self, path: str):
+    def __init__(self, path: str) -> None:
         """Initializarion
 
         Args:
@@ -15,10 +15,10 @@ class Iterator:
         self.counter = 0
         self.path = path
 
-    def __iter__(self):
+    def __iter__(self) -> None:
         return self
 
-    def __next__(self):
+    def __next__(self) -> tuple | None:
         """ Get next element
 
         Returns:
